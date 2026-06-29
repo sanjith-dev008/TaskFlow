@@ -7,10 +7,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 const router = express.Router();
 
 
-// ======================================
-// Create Task
-// POST /api/tasks
-// ======================================
+
 
 router.post("/", authMiddleware, async (req, res) => {
 
@@ -55,10 +52,7 @@ router.post("/", authMiddleware, async (req, res) => {
 });
 
 
-// ======================================
-// Get All Tasks
-// GET /api/tasks
-// ======================================
+
 
 router.get("/", authMiddleware, async (req, res) => {
 
@@ -86,11 +80,6 @@ router.get("/", authMiddleware, async (req, res) => {
 
 });
 
-
-// ======================================
-// Update Task
-// PUT /api/tasks/:id
-// ======================================
 
 router.put("/:id", authMiddleware, async (req, res) => {
 
@@ -149,10 +138,7 @@ router.put("/:id", authMiddleware, async (req, res) => {
 });
 
 
-// ======================================
-// Delete Task
-// DELETE /api/tasks/:id
-// ======================================
+
 
 router.delete("/:id", authMiddleware, async (req, res) => {
 
