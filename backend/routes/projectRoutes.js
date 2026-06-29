@@ -7,10 +7,7 @@ const authMiddleware = require("../middleware/authMiddleware");
 const router = express.Router();
 
 
-// =====================================
-// Create Project
-// POST /api/projects
-// =====================================
+
 
 router.post("/", authMiddleware, async (req, res) => {
 
@@ -55,10 +52,7 @@ router.post("/", authMiddleware, async (req, res) => {
 });
 
 
-// =====================================
-// Get All Projects
-// GET /api/projects
-// =====================================
+
 
 router.get("/", authMiddleware, async (req, res) => {
 
@@ -87,10 +81,7 @@ router.get("/", authMiddleware, async (req, res) => {
 });
 
 
-// =====================================
-// Update Project
-// PUT /api/projects/:id
-// =====================================
+
 
 router.put("/:id", authMiddleware, async (req, res) => {
 
@@ -149,10 +140,7 @@ router.put("/:id", authMiddleware, async (req, res) => {
 });
 
 
-// =====================================
-// Delete Project
-// DELETE /api/projects/:id
-// =====================================
+
 
 router.delete("/:id", authMiddleware, async (req, res) => {
 
