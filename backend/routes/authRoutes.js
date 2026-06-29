@@ -7,9 +7,7 @@ const User = require("../models/User");
 const router = express.Router();
 
 
-// =======================
-// Register User
-// =======================
+
 
 router.post("/register", async (req, res) => {
 
@@ -17,7 +15,6 @@ router.post("/register", async (req, res) => {
 
         const { name, email, password } = req.body;
 
-        // Check if email already exists
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
@@ -26,10 +23,8 @@ router.post("/register", async (req, res) => {
             });
         }
 
-        // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create new user
         const user = await User.create({
 
             name,
@@ -40,7 +35,6 @@ router.post("/register", async (req, res) => {
 
         });
 
-        // Generate JWT
         const token = jwt.sign(
 
             { id: user._id },
@@ -72,9 +66,6 @@ router.post("/register", async (req, res) => {
 });
 
 
-// =======================
-// Login User
-// =======================
 
 router.post("/login", async (req, res) => {
 
@@ -82,7 +73,6 @@ router.post("/login", async (req, res) => {
 
         const { email, password } = req.body;
 
-        // Find user
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -95,7 +85,6 @@ router.post("/login", async (req, res) => {
 
         }
 
-        // Compare password
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
@@ -108,7 +97,6 @@ router.post("/login", async (req, res) => {
 
         }
 
-        // Generate JWT
         const token = jwt.sign(
 
             { id: user._id },
